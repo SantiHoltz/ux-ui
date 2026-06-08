@@ -1,0 +1,245 @@
+/* ============================================
+   NAVBAR — Mobile First
+   ============================================ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-sticky);
+  background: var(--color-white);
+  height: var(--navbar-height);
+  transition: box-shadow var(--transition-base), background var(--transition-base);
+}
+
+.navbar--scrolled {
+  box-shadow: var(--shadow-lg);
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(12px);
+}
+
+.navbar__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Brand */
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.navbar__brand:hover {
+  opacity: 0.85;
+}
+
+.navbar__logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+}
+
+.navbar__brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar__club-name {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--color-secondary);
+  line-height: 1.2;
+}
+
+.navbar__club-city {
+  font-size: var(--text-xs);
+  color: var(--color-gray-500);
+  font-weight: var(--font-medium);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Hamburger */
+.navbar__hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  transition: background var(--transition-fast);
+  position: relative;
+  z-index: calc(var(--z-overlay) + 1);
+}
+
+.navbar__hamburger:hover {
+  background: var(--color-gray-100);
+}
+
+.navbar__hamburger-line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-secondary);
+  border-radius: var(--radius-full);
+  transition: transform var(--transition-base), opacity var(--transition-fast);
+}
+
+.navbar__hamburger--open .navbar__hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar__hamburger--open .navbar__hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.navbar__hamburger--open .navbar__hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Navigation (mobile) */
+.navbar__nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100dvh;
+  background: var(--color-white);
+  padding: calc(var(--navbar-height) + var(--space-6)) var(--space-6) var(--space-6);
+  transform: translateX(100%);
+  transition: transform var(--transition-base);
+  box-shadow: var(--shadow-2xl);
+  z-index: var(--z-overlay);
+  overflow-y: auto;
+}
+
+.navbar__nav--open {
+  transform: translateX(0);
+}
+
+.navbar__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: calc(var(--z-overlay) - 1);
+  animation: fadeIn var(--transition-fast) both;
+}
+
+.navbar__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.navbar__link {
+  display: flex;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  color: var(--color-gray-700);
+  border-radius: var(--radius-lg);
+  transition: background var(--transition-fast), color var(--transition-fast);
+  min-height: 44px;
+}
+
+.navbar__link:hover {
+  background: var(--color-primary-bg);
+  color: var(--color-primary);
+}
+
+.navbar__link--active {
+  background: var(--color-primary-bg);
+  color: var(--color-primary);
+  font-weight: var(--font-semibold);
+  position: relative;
+}
+
+.navbar__link--active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 60%;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+
+/* ============================================
+   DESKTOP (768px+)
+   ============================================ */
+@media (min-width: 768px) {
+  .navbar__hamburger {
+    display: none;
+  }
+
+  .navbar__nav {
+    position: static;
+    width: auto;
+    height: auto;
+    background: transparent;
+    padding: 0;
+    transform: none;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  .navbar__overlay {
+    display: none;
+  }
+
+  .navbar__list {
+    flex-direction: row;
+    gap: var(--space-1);
+  }
+
+  .navbar__link {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-sm);
+    border-radius: var(--radius-full);
+  }
+
+  .navbar__link--active::before {
+    display: none;
+  }
+
+  .navbar__link--active {
+    background: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  .navbar__link--active:hover {
+    background: var(--color-primary-dark);
+    color: var(--color-white);
+  }
+}
+
+@media (min-width: 1024px) {
+  .navbar__logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .navbar__club-name {
+    font-size: var(--text-xl);
+  }
+
+  .navbar__link {
+    padding: var(--space-2) var(--space-5);
+    font-size: var(--text-base);
+  }
+}

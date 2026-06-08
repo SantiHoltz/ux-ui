@@ -1,0 +1,125 @@
+/* ============================================
+   FOOTER — Mobile First
+   ============================================ */
+
+.footer {
+  background: var(--color-secondary);
+  color: var(--color-gray-300);
+  padding: var(--space-12) 0 var(--space-8);
+  margin-top: auto;
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  padding-bottom: var(--space-8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer__title {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--color-white);
+  margin-bottom: var(--space-4);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer__text {
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-gray-400);
+  margin-bottom: var(--space-3);
+}
+
+.footer__address {
+  font-style: normal;
+  font-size: var(--text-sm);
+  color: var(--color-gray-400);
+}
+
+/* Nav links */
+.footer__nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.footer__nav-link {
+  font-size: var(--text-sm);
+  color: var(--color-gray-400);
+  transition: color var(--transition-fast);
+  padding: var(--space-1) 0;
+  display: inline-block;
+}
+
+.footer__nav-link:hover {
+  color: var(--color-accent-light);
+}
+
+/* Contact */
+.footer__contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.footer__contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-gray-400);
+  transition: color var(--transition-fast);
+  padding: var(--space-1) 0;
+}
+
+.footer__contact-link:hover {
+  color: #25D366; /* WhatsApp green */
+}
+
+.footer__icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* Bottom */
+.footer__bottom {
+  padding-top: var(--space-6);
+  text-align: center;
+}
+
+.footer__copyright {
+  font-size: var(--text-xs);
+  color: var(--color-gray-500);
+  margin-bottom: var(--space-2);
+}
+
+.footer__tagline {
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+  font-style: italic;
+  font-weight: var(--font-medium);
+}
+
+/* ============================================
+   TABLET (768px+)
+   ============================================ */
+@media (min-width: 768px) {
+  .footer__grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+
+  .footer__copyright {
+    margin-bottom: 0;
+  }
+}

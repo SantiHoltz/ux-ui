@@ -1,40 +1,174 @@
-.imagen-interactiva-container {
-  width: 100%;           /* <— aquí le dices que ocupe como máximo el 100% */
-  max-width: 1200px;     /* <— y que no pase de 1200px */
-  margin: 0 auto;        /* <— con eso, en pantallas >1200px quedará perfectamente centrado */
-  padding: 20px;
-  padding-top: 40px; /* Espacio adicional para evitar que se corte con el encabezado */
-  text-align: center;
+/* ============================================
+   IMAGEN INTERACTIVA (Progreso) — Mobile First
+   ============================================ */
+
+.progreso-page {
+  background: var(--color-gray-50);
   min-height: 100vh;
+}
+
+/* ===== LOADING ===== */
+.progreso-loading {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  padding: var(--space-16) 0;
+  gap: var(--space-4);
 }
 
-
-.imagen-interactiva-container h2 {
-  color: #333;
-  margin-bottom: 10px;
-  font-size: 2rem;
+.progreso-loading__text {
+  font-size: var(--text-base);
+  color: var(--color-gray-500);
 }
 
-.imagen-interactiva-container p {
-  color: #666;
-  margin-bottom: 30px;
-  font-size: 1.1rem;
+/* ===== ERROR ===== */
+.progreso-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16) 0;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.progreso-error__icon {
+  width: 48px;
+  height: 48px;
+  color: var(--color-primary);
+}
+
+.progreso-error__text {
+  font-size: var(--text-base);
+  color: var(--color-gray-600);
+  max-width: 400px;
+}
+
+/* ===== SECTION HEADER (inherit from Presentacion) ===== */
+.progreso-page .section-header__label {
+  display: inline-block;
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: var(--space-3);
+}
+
+.progreso-page .section-header__title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--color-secondary);
+  margin-bottom: var(--space-4);
+}
+
+.progreso-page .section-header__description {
+  font-size: var(--text-base);
+  color: var(--color-gray-600);
+  line-height: var(--leading-relaxed);
+}
+
+.progreso-page .section-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto var(--space-8);
+}
+
+/* ===== PROGRESS BAR ===== */
+.progreso-bar {
+  max-width: 500px;
+  margin: 0 auto var(--space-8);
+  text-align: center;
+}
+
+.progreso-bar__track {
+  width: 100%;
+  height: 12px;
+  background: var(--color-gray-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: var(--space-2);
+}
+
+.progreso-bar__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+  border-radius: var(--radius-full);
+  transition: width 1s ease-out;
+  min-width: 4px;
+}
+
+.progreso-bar__label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-primary);
+}
+
+/* ===== STATS CARDS ===== */
+.progreso-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+}
+
+.progreso-stat-card {
+  background: var(--color-white);
+  padding: var(--space-4) var(--space-3);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-gray-200);
+}
+
+.progreso-stat-card--success {
+  border-color: var(--color-primary);
+  background: var(--color-primary-bg);
+}
+
+.progreso-stat-card__number {
+  display: block;
+  font-size: var(--text-xl);
+  font-weight: var(--font-extrabold);
+  color: var(--color-secondary);
+  line-height: 1;
+  margin-bottom: var(--space-1);
+}
+
+.progreso-stat-card--success .progreso-stat-card__number {
+  color: var(--color-primary);
+}
+
+.progreso-stat-card__label {
+  font-size: var(--text-xs);
+  color: var(--color-gray-500);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ===== GRID / MAP ===== */
+.progreso-grid-section {
+  background: var(--color-white);
+}
+
+.progreso-grid-section .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .imagen-container {
   position: relative;
-  display: inline-block;
+  display: block;
   max-width: 100%;
   margin: 0 auto;
-  border-radius: 10px;
+  border-radius: var(--radius-xl);
   overflow: visible;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-xl);
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
 }
 
 .imagen-fondo {
@@ -53,6 +187,7 @@
   max-width: 100%;
   margin: 0 auto;
   object-fit: contain;
+  border-radius: var(--radius-xl);
 }
 
 .cuadricula-overlay {
@@ -65,39 +200,49 @@
   grid-template-columns: repeat(32, 1fr);
   grid-template-rows: repeat(19, 1fr);
   pointer-events: none;
+  border-radius: var(--radius-xl);
 }
 
 .cuadrado {
   position: relative;
   width: 100%;
   height: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   pointer-events: auto;
-  transition: all 0.3s ease;
+  transition: all var(--transition-fast);
   cursor: pointer;
 }
 
+.cuadrado:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+  z-index: 10;
+}
+
 .cuadrado.disponible {
-  background-color: rgba(0, 0, 0, 0.4);
-  border-color: rgba(255, 255, 255, 0.1);
-  opacity: 0.6;
+  background-color: rgba(27, 42, 74, 0.45);
+  opacity: 0.7;
 }
 
 .cuadrado.comprado {
   background-color: transparent;
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
   opacity: 1;
 }
 
 .cuadrado:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.8);
-  transform: scale(1.02);
+  background-color: rgba(212, 168, 67, 0.4);
+  border-color: rgba(212, 168, 67, 0.8);
   z-index: 10;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   opacity: 1;
 }
 
+.cuadrado.comprado:hover {
+  background-color: rgba(46, 125, 50, 0.3);
+  border-color: rgba(46, 125, 50, 0.8);
+}
+
+/* Tooltip */
 .tooltip {
   position: absolute;
   top: -45px;
@@ -105,24 +250,22 @@
   transform: translateX(-50%);
   z-index: 1000;
   pointer-events: none;
-  /* Asegurar que el tooltip no se salga del contenedor */
   max-width: 200px;
   white-space: nowrap;
   overflow: visible;
-  text-overflow: ellipsis;
 }
 
 .tooltip-text {
-  background-color: rgba(220, 38, 38, 0.95);
-  color: white;
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
   white-space: nowrap;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  animation: fadeIn 0.3s ease;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: var(--shadow-lg);
+  animation: fadeIn var(--transition-fast) both;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .tooltip-text::after {
@@ -132,179 +275,137 @@
   left: 50%;
   transform: translateX(-50%);
   border: 5px solid transparent;
-  border-top-color: rgba(220, 38, 38, 0.95);
+  border-top-color: var(--color-secondary);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
+/* ===== LEGEND ===== */
+.progreso-legend {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+  padding: var(--space-3) 0;
 }
 
-.estadisticas {
-  margin-top: 30px;
-  padding: 20px;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+.progreso-legend__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-gray-600);
 }
 
-.estadisticas p {
-  margin: 10px 0;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #333;
+.progreso-legend__color {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-gray-300);
 }
 
-.mensaje-especial {
-  font-style: italic;
-  color: #dc2626 !important;
-  font-size: 1.2rem !important;
-  margin-top: 15px !important;
+.progreso-legend__color--vendido {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.3);
+  background-image: linear-gradient(135deg, rgba(46, 125, 50, 0.2), rgba(46, 125, 50, 0.1));
+}
+
+.progreso-legend__color--disponible {
+  background: rgba(27, 42, 74, 0.45);
+}
+
+/* ===== CTA ===== */
+.progreso-cta {
   text-align: center;
+  margin-top: var(--space-10);
+  padding: var(--space-8);
+  background: var(--color-gray-50);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-gray-200);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .imagen-interactiva-container {
-    padding: 15px;
-    padding-top: 35px;
-  }
-  
-  .imagen-interactiva-container h2 {
-    font-size: 1.5rem;
-  }
-  
-  .imagen-interactiva-container p {
-    font-size: 1rem;
-  }
-  
-  .cuadricula-overlay {
-    grid-template-columns: repeat(32, 1fr);
-    grid-template-rows: repeat(19, 1fr);
-  }
-  
-  .tooltip-text {
-    font-size: 0.8rem;
-    padding: 6px 10px;
-  }
-  
-  .estadisticas p {
-    font-size: 1rem;
-  }
-  
-  .mensaje-especial {
-    font-size: 1.1rem !important;
-  }
+.progreso-cta__text {
+  font-size: var(--text-lg);
+  font-style: italic;
+  color: var(--color-primary);
+  font-weight: var(--font-medium);
+  margin-bottom: var(--space-6);
 }
 
-@media (max-width: 480px) {
-  .imagen-interactiva-container {
-    padding: 10px;
-    padding-top: 30px;
-  }
-  
-  .imagen-interactiva-container h2 {
-    font-size: 1.3rem;
-  }
-  
-  .imagen-interactiva-container p {
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-  }
-  
-  .tooltip-text {
-    font-size: 0.7rem;
-    padding: 4px 8px;
-  }
-  
-  .estadisticas {
-    padding: 15px;
-    margin-top: 20px;
-  }
-  
-  .estadisticas p {
-    font-size: 0.9rem;
-  }
-  
-  .mensaje-especial {
-    font-size: 1rem !important;
-  }
+/* ===== BUTTONS (shared) ===== */
+.progreso-page .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-weight: var(--font-semibold);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+  cursor: pointer;
+  border: 2px solid transparent;
+  min-height: 44px;
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-base);
 }
 
-@media (max-width: 360px) {
-  .imagen-interactiva-container {
-    padding: 8px;
-    padding-top: 25px;
+.progreso-page .btn--lg {
+  padding: var(--space-4) var(--space-8);
+  min-height: 48px;
+}
+
+.progreso-page .btn--primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+.progreso-page .btn--primary:hover {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(198, 40, 40, 0.35);
+}
+
+.progreso-page .btn--primary:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   TABLET (768px+)
+   ============================================ */
+@media (min-width: 768px) {
+  .progreso-page .section-header__title {
+    font-size: var(--text-3xl);
   }
-  
-  .imagen-interactiva-container h2 {
-    font-size: 1.1rem;
+
+  .progreso-stat-card {
+    padding: var(--space-6) var(--space-4);
   }
-  
-  .imagen-interactiva-container p {
-    font-size: 0.85rem;
-    margin-bottom: 15px;
+
+  .progreso-stat-card__number {
+    font-size: var(--text-2xl);
   }
-  
-  .tooltip-text {
-    font-size: 0.65rem;
-    padding: 3px 6px;
+
+  .imagen-container {
+    max-width: 800px;
   }
-  
-  .estadisticas {
-    padding: 12px;
-    margin-top: 15px;
-  }
-  
-  .estadisticas p {
-    font-size: 0.85rem;
-  }
-  
-  .mensaje-especial {
-    font-size: 0.9rem !important;
+
+  .progreso-cta__text {
+    font-size: var(--text-xl);
   }
 }
 
-@media (max-width: 320px) {
-  .imagen-interactiva-container {
-    padding: 6px;
-    padding-top: 20px;
+/* ============================================
+   DESKTOP (1024px+)
+   ============================================ */
+@media (min-width: 1024px) {
+  .progreso-page .section-header__title {
+    font-size: var(--text-4xl);
   }
-  
-  .imagen-interactiva-container h2 {
-    font-size: 1rem;
+
+  .progreso-stat-card__number {
+    font-size: var(--text-3xl);
   }
-  
-  .imagen-interactiva-container p {
-    font-size: 0.8rem;
-    margin-bottom: 12px;
+
+  .imagen-container {
+    max-width: 900px;
   }
-  
-  .tooltip-text {
-    font-size: 0.6rem;
-    padding: 2px 5px;
-  }
-  
-  .estadisticas {
-    padding: 10px;
-    margin-top: 12px;
-  }
-  
-  .estadisticas p {
-    font-size: 0.8rem;
-  }
-  
-  .mensaje-especial {
-    font-size: 0.85rem !important;
-  }
-} 
+}

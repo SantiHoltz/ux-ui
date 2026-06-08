@@ -2,93 +2,202 @@ import React from "react";
 import "./Comprar.css";
 
 const Comprar = () => {
-    return (
-        <div className="comprar-container">
-            <div className="comprar-header">
-                <h1>¡SUMATE A LA OBRA DEL GIMNASIO!</h1>
-            </div>
+  const metodosPago = [
+    {
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+          <line x1="1" y1="10" x2="23" y2="10"/>
+        </svg>
+      ),
+      titulo: "Transferencia bancaria",
+      descripcion: (
+        <>
+          Transferí al alias: <strong>filial.sm.argentino</strong>
+        </>
+      ),
+      nota: "Enviá el comprobante de la operación por WhatsApp"
+    },
+    {
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <rect x="2" y="5" width="20" height="14" rx="2"/>
+          <line x1="2" y1="10" x2="22" y2="10"/>
+        </svg>
+      ),
+      titulo: "Tarjeta Marcos Juárez",
+      descripcion: "Hasta 6 cuotas sin interés",
+      nota: null
+    },
+    {
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <line x1="12" y1="1" x2="12" y2="23"/>
+          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        </svg>
+      ),
+      titulo: "Efectivo en la mutual",
+      descripcion: "Pagá directamente en la mutual del club",
+      nota: null
+    }
+  ];
 
-            <div className="comprar-content">
-                <div className="slogan-section">
-                    <h2>Construyamos juntos el futuro de todos...</h2>
-                </div>
+  const pasos = [
+    {
+      numero: "1",
+      titulo: "Elegí tu método de pago",
+      descripcion: "Transferencia, tarjeta o efectivo"
+    },
+    {
+      numero: "2",
+      titulo: "Realizá el pago",
+      descripcion: "Seguí las instrucciones del método elegido"
+    },
+    {
+      numero: "3",
+      titulo: "Enviá el comprobante",
+      descripcion: "Contactanos por WhatsApp con el comprobante"
+    },
+    {
+      numero: "4",
+      titulo: "¡Listo!",
+      descripcion: "Tu nombre aparecerá en la cancha en menos de 24hs"
+    }
+  ];
 
-                <div className="precio-destacado">
-                    <h3>Valor del m²: $120.000.-</h3>
-                </div>
+  return (
+    <div className="comprar-page">
+      {/* Header */}
+      <section className="section comprar-hero" aria-labelledby="comprar-titulo">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-header__label">Colaborá</span>
+            <h1 id="comprar-titulo" className="section-header__title">
+              Sumate a la obra del gimnasio
+            </h1>
+            <p className="section-header__description">
+              Construyamos juntos el futuro del Club Argentino.
+              Cada metro cuadrado que adquieras es un paso más hacia la renovación.
+            </p>
+          </div>
 
-                <div className="metodos-pago">
-                    <h3>Métodos de Pago</h3>
-                    
-                    <div className="metodo-pago">
-                        <div className="icono-metodo">➤</div>
-                        <div className="detalle-metodo">
-                            <h4>Pagos por transferencia bancaria</h4>
-                            <p>al alias: <strong>filial.sm.argentino</strong></p>
-                            <p className="nota">(enviar comprobante de la operación)</p>
-                        </div>
-                    </div>
-
-                    <div className="metodo-pago">
-                        <div className="icono-metodo">➤</div>
-                        <div className="detalle-metodo">
-                            <h4>Pagos con Tarjeta Marcos Juárez</h4>
-                            <p>en hasta 6 cuotas sin interés</p>
-                        </div>
-                    </div>
-
-                    <div className="metodo-pago">
-                        <div className="icono-metodo">➤</div>
-                        <div className="detalle-metodo">
-                            <h4>Pagos en efectivo en la mutual</h4>
-                            <p>del club</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="contacto-section">
-                    <h3>Interesados comunicarse al:</h3>
-                    <div className="telefonos">
-                        <a 
-                            href="https://wa.me/5493472449260" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="telefono-link"
-                        >
-                            <div className="telefono">
-                                <span className="numero">3472-449260</span>
-                                <span className="whatsapp-icon">📱</span>
-                            </div>
-                        </a>
-                        <a 
-                            href="https://wa.me/5493472529451" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="telefono-link"
-                        >
-                            <div className="telefono">
-                                <span className="numero">3472-529451</span>
-                                <span className="whatsapp-icon">📱</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div className="info-adicional">
-                    <div className="info-card">
-                        <h4>¿Cómo funciona?</h4>
-                        <p>Realiza el pago por cualquiera de los métodos disponibles. Una vez confirmado el pago, tu nombre aparecerá en el cuadrado seleccionado en menos de 24 horas.</p>
-                    </div>
-                    
-                    <div className="info-card">
-                        <h4>¿Por qué m²?</h4>
-                        <p>Cada metro cuadrado representa una parte del nuevo piso del gimnasio. Al comprar un m², estás contribuyendo directamente a la renovación de este espacio histórico.</p>
-                    </div>
-                </div>
-            </div>
-
+          {/* Precio */}
+          <div className="comprar-precio">
+            <span className="comprar-precio__label">Valor del m²</span>
+            <span className="comprar-precio__amount">$120.000</span>
+            <span className="comprar-precio__note">pesos argentinos</span>
+          </div>
         </div>
-    );
+      </section>
+
+      {/* Pasos */}
+      <section className="section comprar-pasos-section" aria-labelledby="pasos-titulo">
+        <div className="container">
+          <h2 id="pasos-titulo" className="comprar-section-title">¿Cómo funciona?</h2>
+          <div className="comprar-pasos">
+            {pasos.map((paso, index) => (
+              <div key={index} className="comprar-paso">
+                <div className="comprar-paso__numero" aria-hidden="true">
+                  {paso.numero}
+                </div>
+                <div className="comprar-paso__content">
+                  <h3 className="comprar-paso__titulo">{paso.titulo}</h3>
+                  <p className="comprar-paso__descripcion">{paso.descripcion}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Métodos de pago */}
+      <section className="section comprar-metodos-section" aria-labelledby="metodos-titulo">
+        <div className="container">
+          <h2 id="metodos-titulo" className="comprar-section-title">Métodos de pago</h2>
+          <div className="comprar-metodos">
+            {metodosPago.map((metodo, index) => (
+              <div key={index} className="comprar-metodo-card">
+                <div className="comprar-metodo-card__icon" aria-hidden="true">
+                  {metodo.icon}
+                </div>
+                <div className="comprar-metodo-card__content">
+                  <h3 className="comprar-metodo-card__titulo">{metodo.titulo}</h3>
+                  <p className="comprar-metodo-card__descripcion">{metodo.descripcion}</p>
+                  {metodo.nota && (
+                    <p className="comprar-metodo-card__nota">{metodo.nota}</p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contacto WhatsApp */}
+      <section className="section comprar-contacto-section" aria-labelledby="contacto-titulo">
+        <div className="container">
+          <div className="comprar-contacto">
+            <h2 id="contacto-titulo" className="comprar-contacto__titulo">
+              ¿Tenés dudas? Escribinos
+            </h2>
+            <p className="comprar-contacto__descripcion">
+              Contactanos por WhatsApp para consultas, información sobre tu compra o enviar tu comprobante de pago.
+            </p>
+            <div className="comprar-contacto__buttons">
+              <a
+                href="https://wa.me/5493472449260"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="comprar-whatsapp-btn"
+                aria-label="Enviar mensaje por WhatsApp a Juan Pablo Holtz al número 3472-449260"
+              >
+                <svg className="comprar-whatsapp-btn__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                <span>3472-449260</span>
+              </a>
+              <a
+                href="https://wa.me/5493472529451"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="comprar-whatsapp-btn"
+                aria-label="Enviar mensaje por WhatsApp al Club Argentino al número 3472-529451"
+              >
+                <svg className="comprar-whatsapp-btn__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                <span>3472-529451</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Info adicional */}
+      <section className="section comprar-info-section" aria-labelledby="info-titulo">
+        <div className="container">
+          <h2 id="info-titulo" className="sr-only">Información adicional</h2>
+          <div className="comprar-info-grid">
+            <div className="comprar-info-card">
+              <h3>¿Por qué m²?</h3>
+              <p>
+                Cada metro cuadrado representa una parte del nuevo piso del gimnasio.
+                Al comprar un m², estás contribuyendo directamente a la renovación
+                de este espacio histórico.
+              </p>
+            </div>
+            <div className="comprar-info-card">
+              <h3>Tu nombre en la cancha</h3>
+              <p>
+                Cada colaborador queda registrado en el mapa interactivo del proyecto.
+                Tu nombre será visible para toda la comunidad como parte de esta historia.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 };
 
 export default Comprar;
