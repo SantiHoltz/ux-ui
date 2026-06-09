@@ -1,6 +1,9 @@
 import React from "react";
 import "./Comprar.css";
 
+const bgModules = import.meta.glob('../assets/img/bg-comprar/*.{png,jpg,jpeg}', { eager: true });
+const bgList = Object.values(bgModules).map((mod) => mod.default);
+
 const Comprar = () => {
   const metodosPago = [
     {
@@ -69,6 +72,12 @@ const Comprar = () => {
     <div className="comprar-page">
       {/* Header */}
       <section className="section comprar-hero" aria-labelledby="comprar-titulo">
+        <div className="comprar-hero__bg">
+          {bgList.map((src, index) => (
+            <img key={index} src={src} alt="Fondo club" className="comprar-hero__bg-item" />
+          ))}
+        </div>
+        <div className="comprar-hero__overlay"></div>
         <div className="container">
           <div className="section-header">
             <span className="section-header__label">Colaborá</span>
@@ -91,7 +100,7 @@ const Comprar = () => {
       </section>
 
       {/* Pasos */}
-      <section className="section comprar-pasos-section" aria-labelledby="pasos-titulo">
+      <section className="section comprar-pasos-section section-divider" aria-labelledby="pasos-titulo">
         <div className="container">
           <h2 id="pasos-titulo" className="comprar-section-title">¿Cómo funciona?</h2>
           <div className="comprar-pasos">
@@ -111,7 +120,7 @@ const Comprar = () => {
       </section>
 
       {/* Métodos de pago */}
-      <section className="section comprar-metodos-section" aria-labelledby="metodos-titulo">
+      <section className="section comprar-metodos-section section-divider" aria-labelledby="metodos-titulo">
         <div className="container">
           <h2 id="metodos-titulo" className="comprar-section-title">Métodos de pago</h2>
           <div className="comprar-metodos">
@@ -134,7 +143,7 @@ const Comprar = () => {
       </section>
 
       {/* Contacto WhatsApp */}
-      <section className="section comprar-contacto-section" aria-labelledby="contacto-titulo">
+      <section className="section comprar-contacto-section section-divider" aria-labelledby="contacto-titulo">
         <div className="container">
           <div className="comprar-contacto">
             <h2 id="contacto-titulo" className="comprar-contacto__titulo">

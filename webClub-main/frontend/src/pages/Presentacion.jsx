@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Presentacion.css";
+import logo from "../assets/img/logo.png";
+
+// Cargamos todas las imágenes de sponsors automáticamente
+const sponsorModules = import.meta.glob('../assets/img/sponsors/*.png', { eager: true });
+const sponsorsList = Object.values(sponsorModules).map((mod) => mod.default);
 
 const Presentacion = () => {
   const navigate = useNavigate();
@@ -94,7 +99,9 @@ const Presentacion = () => {
       {/* ===== HERO ===== */}
       <section className="hero" aria-labelledby="hero-titulo">
         <div className="hero__bg" aria-hidden="true"></div>
+        <div className="hero__overlay" aria-hidden="true"></div>
         <div className="hero__content container">
+          <img src={logo} alt="Escudo Club Argentino" className="hero__logo" />
           <span className="hero__badge">Proyecto Comunitario</span>
           <h1 id="hero-titulo" className="hero__titulo">
             Renovación del Gimnasio
@@ -124,8 +131,18 @@ const Presentacion = () => {
         </div>
       </section>
 
+      {/* ===== SPONSORS TICKER ===== */}
+      <section className="sponsors-ticker" aria-label="Nuestros sponsors">
+        <div className="sponsors-ticker__track">
+          {/* Renderizamos la lista de sponsors dos veces para que el scroll sea infinito sin cortes */}
+          {[...sponsorsList, ...sponsorsList].map((src, index) => (
+            <img key={index} src={src} alt="Sponsor" className="sponsors-ticker__logo" />
+          ))}
+        </div>
+      </section>
+
       {/* ===== PROBLEMA / NECESIDAD ===== */}
-      <section className="section problema" aria-labelledby="problema-titulo">
+      <section className="section problema section-divider" aria-labelledby="problema-titulo">
         <div className="container">
           <div className="section-header">
             <span className="section-header__label">El desafío</span>
@@ -177,7 +194,7 @@ const Presentacion = () => {
       </section>
 
       {/* ===== SOLUCIÓN / PROYECTO ===== */}
-      <section className="section solucion" aria-labelledby="solucion-titulo">
+      <section className="section solucion section-divider" aria-labelledby="solucion-titulo">
         <div className="container">
           <div className="solucion__content">
             <div className="solucion__text">
@@ -214,7 +231,7 @@ const Presentacion = () => {
       </section>
 
       {/* ===== BENEFICIOS ===== */}
-      <section className="section beneficios" aria-labelledby="beneficios-titulo">
+      <section className="section beneficios section-divider" aria-labelledby="beneficios-titulo">
         <div className="container">
           <div className="section-header">
             <span className="section-header__label">Beneficios</span>
@@ -238,7 +255,7 @@ const Presentacion = () => {
       </section>
 
       {/* ===== CTA ===== */}
-      <section className="section cta" aria-labelledby="cta-titulo">
+      <section className="section cta section-divider" aria-labelledby="cta-titulo">
         <div className="container">
           <div className="cta__content">
             <h2 id="cta-titulo" className="cta__titulo">
@@ -269,7 +286,7 @@ const Presentacion = () => {
       </section>
 
       {/* ===== FAQ ===== */}
-      <section className="section faq" aria-labelledby="faq-titulo">
+      <section className="section faq section-divider" aria-labelledby="faq-titulo">
         <div className="container">
           <div className="section-header">
             <span className="section-header__label">Preguntas frecuentes</span>

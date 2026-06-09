@@ -261,6 +261,24 @@ p {
   padding-right: var(--space-4);
 }
 
+/* Section Divider */
+.section-divider {
+  position: relative;
+}
+
+.section-divider::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 800px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(198, 40, 40, 0.25), transparent);
+  pointer-events: none;
+}
+
 @media (min-width: 768px) {
   .container {
     padding-left: var(--space-6);

@@ -16,31 +16,39 @@
 .hero__bg {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(
-      135deg,
-      var(--color-secondary-dark) 0%,
-      var(--color-secondary) 40%,
-      var(--color-primary-dark) 100%
-    );
+  background-image: url('../assets/img/mobile.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   z-index: 0;
 }
 
-.hero__bg::after {
-  content: '';
+.hero__overlay {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(
-      ellipse at 80% 20%,
-      rgba(198, 40, 40, 0.3) 0%,
-      transparent 60%
-    ),
-    radial-gradient(
-      ellipse at 20% 80%,
-      rgba(212, 168, 67, 0.15) 0%,
-      transparent 50%
-    );
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 0;
+}
+
+.hero__logo {
+  width: 140px;
+  height: auto;
+  margin: 0 auto var(--space-6);
+  display: block;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+  animation: fadeInDown 0.8s ease-out both;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -30px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .hero__content {
@@ -227,6 +235,54 @@
   line-height: var(--leading-relaxed);
 }
 
+/* ===== SPONSORS TICKER ===== */
+.sponsors-ticker {
+  background: var(--color-white);
+  padding: var(--space-6) 0;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.sponsors-ticker__track {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+  width: max-content;
+  /* 60s por 30 imágenes hace que el scroll sea suave */
+  animation: scroll-ticker 60s linear infinite;
+  padding: 0 var(--space-4);
+}
+
+.sponsors-ticker__track:hover {
+  animation-play-state: paused;
+}
+
+.sponsors-ticker__logo {
+  height: 50px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+  opacity: 0.6;
+  filter: grayscale(100%);
+  transition: opacity var(--transition-base), filter var(--transition-base), transform var(--transition-base);
+}
+
+.sponsors-ticker__logo:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+@keyframes scroll-ticker {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-50% - (var(--space-10) / 2)));
+  }
+}
+
 /* ===== PROBLEMA ===== */
 .problema {
   background: var(--color-white);
@@ -393,13 +449,18 @@
 
 /* ===== CTA ===== */
 .cta {
-  background: linear-gradient(135deg, var(--color-secondary-dark) 0%, var(--color-secondary) 100%);
+  background: var(--color-gray-50);
 }
 
 .cta__content {
   text-align: center;
-  max-width: 600px;
+  max-width: 640px;
   margin: 0 auto;
+  padding: var(--space-8);
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  border-radius: var(--radius-2xl);
+  border: none;
+  box-shadow: var(--shadow-xl);
 }
 
 .cta__titulo {
@@ -411,9 +472,8 @@
 
 .cta__descripcion {
   font-size: var(--text-base);
-  color: rgba(255, 255, 255, 0.75);
-  line-height: var(--leading-relaxed);
-  margin-bottom: var(--space-8);
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: var(--space-6);
 }
 
 .cta__actions {
@@ -436,7 +496,7 @@
 
 /* ===== FAQ ===== */
 .faq {
-  background: var(--color-gray-50);
+  background: var(--color-white);
 }
 
 .faq__list {
@@ -516,7 +576,7 @@
 
 /* ===== FIRMA ===== */
 .firma-section {
-  background: var(--color-white);
+  background: var(--color-gray-50);
 }
 
 .firma-section__content {
@@ -589,6 +649,7 @@
    TABLET (768px+) — Mostrar todo el contenido
    ============================================ */
 @media (min-width: 768px) {
+
   .problema,
   .beneficios,
   .firma-section {
@@ -599,8 +660,16 @@
     min-height: 90vh;
   }
 
+  .hero__bg {
+    background-image: url('../assets/img/hero-bg.jpg');
+  }
+
   .hero__titulo {
     font-size: var(--text-4xl);
+  }
+
+  .hero__logo {
+    width: 180px;
   }
 
   .hero__subtitulo {
@@ -614,6 +683,11 @@
   .hero__actions {
     flex-direction: row;
     justify-content: center;
+  }
+
+  .sponsors-ticker__logo {
+    height: 70px;
+    max-width: 200px;
   }
 
   .section-header__title {
@@ -644,6 +718,10 @@
 @media (min-width: 1024px) {
   .hero__titulo {
     font-size: var(--text-5xl);
+  }
+
+  .hero__logo {
+    width: 200px;
   }
 
   .hero__subtitulo {
