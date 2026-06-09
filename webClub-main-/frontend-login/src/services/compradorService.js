@@ -1,13 +1,23 @@
 import axios from 'axios';
 
-// Configuración base de axios
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = import.meta.env.VITE_API_URL
+  || (import.meta.env.DEV
+    ? 'http://localhost:3000'
+    : 'https://ux-ui-orcin.vercel.app');
+
+const apiClient = axios.create({
+  baseURL: API_BASE_URL,
+  timeout: 10000,
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
 
 const compradorService = {
   // Obtener todos los compradores
   async obtenerCompradores() {
     try {
-      const response = await axios.get(`${API_BASE_URL}/compradores`);
+      const response = await apiClient.get('/compradores');
       return response.data;
     } catch (error) {
       console.error('Error al obtener compradores:', error);
@@ -18,7 +28,7 @@ const compradorService = {
   // Obtener un comprador por número de cuadrícula
   async obtenerCompradorPorCuadricula(cuadricula) {
     try {
-      const response = await axios.get(`${API_BASE_URL}/compradores/${cuadricula}`);
+      const response = await apiClient.get(`/compradores/${cuadricula}`);
       return response.data;
     } catch (error) {
       console.error(`Error al obtener comprador de cuadrícula ${cuadricula}:`, error);
@@ -29,7 +39,7 @@ const compradorService = {
   // Crear un nuevo comprador
   async crearComprador(comprador) {
     try {
-      const response = await axios.post(`${API_BASE_URL}/compradores`, comprador);
+      const response = await apiClient.post('/compradores', comprador);
       return response.data;
     } catch (error) {
       console.error('Error al crear comprador:', error);
@@ -40,7 +50,7 @@ const compradorService = {
   // Actualizar un comprador
   async actualizarComprador(cuadricula, datos) {
     try {
-      const response = await axios.put(`${API_BASE_URL}/compradores/${cuadricula}`, datos);
+      const response = await apiClient.put(`/compradores/${cuadricula}`, datos);
       return response.data;
     } catch (error) {
       console.error(`Error al actualizar comprador de cuadrícula ${cuadricula}:`, error);
@@ -51,7 +61,7 @@ const compradorService = {
   // Eliminar un comprador
   async eliminarComprador(cuadricula) {
     try {
-      const response = await axios.delete(`${API_BASE_URL}/compradores/${cuadricula}`);
+      const response = await apiClient.delete(`/compradores/${cuadricula}`);
       return response.data;
     } catch (error) {
       console.error(`Error al eliminar comprador de cuadrícula ${cuadricula}:`, error);
@@ -60,4 +70,4 @@ const compradorService = {
   }
 };
 
-export default compradorService; 
+export default compradorService;

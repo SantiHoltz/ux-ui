@@ -1,12 +1,32 @@
-# React + Vite
+# Club Argentino - Panel administrativo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Deploy en Vercel
 
-Currently, two official plugins are available:
+Este frontend debe estar en un proyecto de Vercel separado del sitio publico.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Configuracion del proyecto:
 
-## Expanding the ESLint configuration
+```text
+Root Directory: webClub-main-/frontend-login
+Framework Preset: Vite
+Build Command: npm run build
+Output Directory: dist
+Install Command: npm install
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Variables requeridas en `Settings > Environment Variables`:
+
+```env
+VITE_ADMIN_USERNAME=usuario_real
+VITE_ADMIN_PASSWORD=contraseña_real
+VITE_ADMIN_NAME=Administrador
+VITE_API_URL=https://ux-ui-orcin.vercel.app
+```
+
+Las variables deben habilitarse para `Production`. Despues de agregarlas o
+modificarlas hay que crear un nuevo deployment.
+
+El dominio esperado es `login-uxui.vercel.app`. Si muestra
+`DEPLOYMENT_NOT_FOUND`, hay que abrir `Settings > Domains`, eliminar ese dominio
+del proyecto anterior si corresponde y agregarlo al proyecto que despliega esta
+carpeta.
