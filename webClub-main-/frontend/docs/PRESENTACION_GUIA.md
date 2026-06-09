@@ -8,7 +8,7 @@
 - **Título**: Rediseño UX/UI — Club Argentino de Marcos Juárez
 - **Subtítulo**: Renovación del Gimnasio — Proyecto Comunitario
 - **Materia**: Experiencia e Interfaces de Usuario
-- **URL**: https://canchaargentino.vercel.app
+- **URL**: https://canchaargentino-uxui.vercel.app
 
 ---
 
@@ -266,4 +266,4 @@ Nav "Progreso" → Mapa interactivo → Stats → CTA
 - WCAG 2.1: [Web Content Accessibility Guidelines](https://www.w3.org/WAI/standards-guidelines/wcag/)
 - Google Fonts: [Inter](https://fonts.google.com/specimen/Inter)
 - Repositorio del proyecto: [GitHub](https://github.com/)
-- Web en producción: https://canchaargentino.vercel.app
+- Web en producción: https://canchaargentino-uxui.vercel.app

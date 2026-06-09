@@ -1,3 +1,20 @@
+# Club Argentino - Frontend
+
+## Deploy en Vercel
+
+Si el proyecto se importa desde la raiz del repositorio, Vercel usa el
+`vercel.json` de la raiz para instalar y compilar esta aplicacion.
+
+Tambien se pueden configurar estas variables en Vercel:
+
+```env
+VITE_API_URL_PROD=https://ux-ui-orcin.vercel.app
+VITE_API_TIMEOUT=10000
+```
+
+Despues de cambiar variables de entorno hay que volver a desplegar. La
+aplicacion incluye valores de respaldo para no quedar en blanco si faltan.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
