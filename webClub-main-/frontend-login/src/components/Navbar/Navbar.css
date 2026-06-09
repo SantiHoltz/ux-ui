@@ -1,0 +1,121 @@
+/* ============================================
+   NAVBAR ADMIN
+   ============================================ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-sticky);
+  background: var(--color-primary);
+  height: var(--navbar-height);
+  transition: box-shadow var(--transition-base), background var(--transition-base);
+}
+
+.navbar--scrolled {
+  box-shadow: var(--shadow-lg);
+  background: rgba(198, 40, 40, 0.97);
+  backdrop-filter: blur(12px);
+}
+
+.navbar__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Brand */
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.navbar__brand:hover {
+  opacity: 0.85;
+}
+
+.navbar__logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+}
+
+.navbar__brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar__club-name {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--color-white);
+  line-height: 1.2;
+}
+
+.navbar__club-city {
+  font-size: var(--text-xs);
+  color: var(--color-white);
+  opacity: 0.9;
+  font-weight: var(--font-bold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Logout Button */
+.navbar__logout-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: transparent;
+  color: var(--color-white);
+  border: 1px solid var(--color-white);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  transition: all var(--transition-fast);
+}
+
+.navbar__logout-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.logout-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .logout-text {
+    display: none;
+  }
+  
+  .navbar__logout-btn {
+    padding: var(--space-2);
+  }
+  
+  .navbar__club-name {
+    font-size: var(--text-base);
+  }
+}
+
+@media (min-width: 1024px) {
+  .navbar__logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .navbar__club-name {
+    font-size: var(--text-xl);
+  }
+}

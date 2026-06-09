@@ -36,10 +36,6 @@ const Admin = () => {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('isAuthenticated');
-    navigate('/login');
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -156,9 +152,6 @@ const Admin = () => {
     <div className="admin-container">
       <div className="admin-header">
         <h1>Panel de Administración</h1>
-        <button onClick={handleLogout} className="logout-button">
-          Cerrar Sesión
-        </button>
       </div>
 
       <div className="admin-content">
@@ -195,7 +188,7 @@ const Admin = () => {
 
             <button 
               type="submit" 
-              className="create-button"
+              className="btn-admin create-button"
               disabled={isLoading}
             >
               {isLoading ? 'Creando...' : 'Crear Compradores'}
@@ -221,7 +214,7 @@ const Admin = () => {
 
             <button 
               type="submit" 
-              className="delete-button"
+              className="btn-admin delete-button"
               disabled={isLoadingEliminar}
             >
               {isLoadingEliminar ? 'Eliminando...' : 'Eliminar Comprador'}
@@ -259,7 +252,7 @@ const Admin = () => {
 
             <button 
               type="submit" 
-              className="update-button"
+              className="btn-admin update-button"
               disabled={isLoadingActualizar}
             >
               {isLoadingActualizar ? 'Actualizando...' : 'Actualizar Nombre'}

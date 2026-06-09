@@ -14,7 +14,7 @@
   margin: 0 auto;
   padding: 0 20px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 100px;
 }
@@ -124,11 +124,11 @@
     max-width: 95%;
     padding: 0 15px;
   }
-  
+
   .logo h1 {
     font-size: 1.6rem;
   }
-  
+
   .logo-imagen {
     width: 70px;
     height: 70px;
@@ -140,20 +140,20 @@
     height: 90px;
     padding: 0 10px;
   }
-  
+
   .logo {
     gap: 10px;
   }
-  
+
   .logo h1 {
     font-size: 1.4rem;
   }
-  
+
   .logo-imagen {
     width: 60px;
     height: 60px;
   }
-  
+
   .nav-lista {
     gap: 0.8rem;
   }
@@ -172,30 +172,30 @@
     padding: 8px 10px;
     justify-content: center;
   }
-  
+
   .logo h1 {
     font-size: 1.2rem;
   }
-  
+
   .logo-imagen {
     width: 50px;
     height: 50px;
   }
-  
+
   .nav-lista {
     gap: 0.5rem;
   }
-  
+
   .nav-link {
     font-size: 0.9rem;
     padding: 0.3rem 1rem;
     background: rgba(255, 255, 255, 0.1);
   }
-  
+
   .nav-link:hover {
     background: rgba(255, 255, 255, 0.2);
   }
-  
+
   .nav-link-activo {
     background: rgba(255, 255, 255, 0.3);
   }
@@ -210,7 +210,7 @@
   .logo h1 {
     font-size: 1rem;
   }
-  
+
   .logo-imagen {
     width: 45px;
     height: 45px;
@@ -221,11 +221,11 @@
     padding: 0.25rem 0.8rem;
     background: rgba(255, 255, 255, 0.1);
   }
-  
+
   .nav-link:hover {
     background: rgba(255, 255, 255, 0.2);
   }
-  
+
   .nav-link-activo {
     background: rgba(255, 255, 255, 0.3);
   }
@@ -235,26 +235,26 @@
   .encabezado-container {
     height: 100px;
   }
-  
+
   .logo h1 {
     font-size: 0.9rem;
   }
-  
+
   .logo-imagen {
     width: 40px;
     height: 40px;
   }
-  
+
   .nav-link {
     font-size: 0.8rem;
     padding: 0.2rem 0.6rem;
     background: rgba(255, 255, 255, 0.1);
   }
-  
+
   .nav-link:hover {
     background: rgba(255, 255, 255, 0.2);
   }
-  
+
   .nav-link-activo {
     background: rgba(255, 255, 255, 0.3);
   }
@@ -265,27 +265,27 @@
     height: 90px;
     padding: 6px 6px;
   }
-  
+
   .logo h1 {
     font-size: 0.8rem;
   }
-  
+
   .logo-imagen {
     width: 35px;
     height: 35px;
   }
-  
+
   .nav-link {
     font-size: 0.75rem;
     padding: 0.15rem 0.5rem;
     background: rgba(255, 255, 255, 0.1);
   }
-  
+
   .nav-link:hover {
     background: rgba(255, 255, 255, 0.2);
   }
-  
+
   .nav-link-activo {
     background: rgba(255, 255, 255, 0.3);
   }
-} 
+}
