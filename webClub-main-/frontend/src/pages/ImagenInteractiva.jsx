@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import imagenCancha from '../assets/img/Cancha.png';
+import imagenCancha from '../assets/img/cancha.webp';
 import compradorService from '../services/compradorService';
 import './ImagenInteractiva.css';
 
@@ -29,14 +29,10 @@ const ImagenInteractiva = () => {
     cargarCompradores();
   }, []);
 
-  const obtenerPersona = (numeroCuadrado) => {
-    const comprador = compradores.find(c => c.cuadricula === numeroCuadrado);
-    return comprador ? comprador.nombre : "Disponible";
-  };
-
-  const estaComprado = (numeroCuadrado) => {
-    return compradores.some(c => c.cuadricula === numeroCuadrado);
-  };
+  const compradoresPorCuadricula = useMemo(
+    () => new Map(compradores.map((comprador) => [comprador.cuadricula, comprador])),
+    [compradores]
+  );
 
   const calcularPosicionTooltip = (numeroCuadrado) => {
     const columnas = 32;
@@ -170,30 +166,40 @@ const ImagenInteractiva = () => {
         <div className="container">
           <div className="imagen-container">
             <div className="imagen-fondo">
-              <img src={imagenCancha} alt="Vista aérea de la cancha del Club Argentino mostrando el progreso de venta de metros cuadrados" className="imagen-principal" />
+              <img
+                src={imagenCancha}
+                alt="Vista aérea de la cancha del Club Argentino mostrando el progreso de venta de metros cuadrados"
+                className="imagen-principal"
+                decoding="async"
+              />
             </div>
 
             <div className="cuadricula-overlay" role="grid" aria-label="Cuadrícula de metros cuadrados de la cancha">
               {cuadrados.map((numero) => (
-                <div
-                  key={numero}
-                  className={`cuadrado ${estaComprado(numero) ? 'comprado' : 'disponible'}`}
-                  onMouseEnter={() => setHoveredSquare(numero)}
-                  onMouseLeave={() => setHoveredSquare(null)}
-                  onFocus={() => setHoveredSquare(numero)}
-                  onBlur={() => setHoveredSquare(null)}
-                  tabIndex={0}
-                  role="gridcell"
-                  aria-label={`Metro cuadrado ${numero}: ${estaComprado(numero) ? `adquirido por ${obtenerPersona(numero)}` : 'disponible'}`}
-                >
-                  {hoveredSquare === numero && (
-                    <div className="tooltip" style={calcularPosicionTooltip(numero)} role="tooltip">
-                      <span className="tooltip-text">
-                        {obtenerPersona(numero)}
-                      </span>
+                (() => {
+                  const comprador = compradoresPorCuadricula.get(numero);
+                  const nombre = comprador?.nombre ?? 'Disponible';
+
+                  return (
+                    <div
+                      key={numero}
+                      className={`cuadrado ${comprador ? 'comprado' : 'disponible'}`}
+                      onMouseEnter={() => setHoveredSquare(numero)}
+                      onMouseLeave={() => setHoveredSquare(null)}
+                      onFocus={() => setHoveredSquare(numero)}
+                      onBlur={() => setHoveredSquare(null)}
+                      tabIndex={0}
+                      role="gridcell"
+                      aria-label={`Metro cuadrado ${numero}: ${comprador ? `adquirido por ${nombre}` : 'disponible'}`}
+                    >
+                      {hoveredSquare === numero && (
+                        <div className="tooltip" style={calcularPosicionTooltip(numero)} role="tooltip">
+                          <span className="tooltip-text">{nombre}</span>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
+                  );
+                })()
               ))}
             </div>
           </div>

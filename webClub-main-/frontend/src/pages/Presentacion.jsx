@@ -136,7 +136,14 @@ const Presentacion = () => {
         <div className="sponsors-ticker__track">
           {/* Renderizamos la lista de sponsors dos veces para que el scroll sea infinito sin cortes */}
           {[...sponsorsList, ...sponsorsList].map((src, index) => (
-            <img key={index} src={src} alt="Sponsor" className="sponsors-ticker__logo" />
+            <img
+              key={index}
+              src={src}
+              alt="Sponsor"
+              className="sponsors-ticker__logo"
+              loading={index < 6 ? 'eager' : 'lazy'}
+              decoding="async"
+            />
           ))}
         </div>
       </section>

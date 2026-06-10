@@ -13,3 +13,10 @@
   flex: 1;
   padding-top: var(--navbar-height);
 }
+.route-loading {
+  min-height: 70vh;
+  display: grid;
+  place-items: center;
+  color: var(--color-gray-600);
+  font-weight: var(--font-medium);
+}

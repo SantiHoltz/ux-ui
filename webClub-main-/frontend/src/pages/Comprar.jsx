@@ -1,7 +1,7 @@
 import React from "react";
 import "./Comprar.css";
 
-const bgModules = import.meta.glob('../assets/img/bg-comprar/*.{png,jpg,jpeg}', { eager: true });
+const bgModules = import.meta.glob('../assets/img/bg-comprar/*.webp', { eager: true });
 const bgList = Object.values(bgModules).map((mod) => mod.default);
 
 const Comprar = () => {
@@ -74,7 +74,15 @@ const Comprar = () => {
       <section className="section comprar-hero" aria-labelledby="comprar-titulo">
         <div className="comprar-hero__bg">
           {bgList.map((src, index) => (
-            <img key={index} src={src} alt="Fondo club" className="comprar-hero__bg-item" />
+            <img
+              key={index}
+              src={src}
+              alt=""
+              aria-hidden="true"
+              className="comprar-hero__bg-item"
+              loading={index === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+            />
           ))}
         </div>
         <div className="comprar-hero__overlay"></div>
